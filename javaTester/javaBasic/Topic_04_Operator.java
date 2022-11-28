@@ -1,5 +1,7 @@
 package javaBasic;
 
+import org.testng.Assert;
+
 public class Topic_04_Operator {
 	
 	public static  void main(String[] args) {
@@ -23,6 +25,19 @@ public class Topic_04_Operator {
 			System.out.println(i);
 			
 		}
+		
+		Assert.assertTrue(5 < 6);
+		String address = "Ho Chi Minh";
+		
+		if (!(address == "Ha Noi")) {
+			System.out.println("Address is not the same");
+			
+		}
+		
+		// Tam nguyên: = ? :
+		boolean status = (address == "Ha Noi") ? true : false;
+		System.out.println(status);
+		
 
 	}
 }
