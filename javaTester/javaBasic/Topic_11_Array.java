@@ -8,8 +8,5 @@ public class Topic_11_Array {
 	}
 
 	String studentName[] = { "Nam", "Long", "Trang" };
-	
-
-}
 
 }
