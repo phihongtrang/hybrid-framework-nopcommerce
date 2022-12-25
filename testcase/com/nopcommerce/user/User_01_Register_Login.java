@@ -22,7 +22,7 @@ public class User_01_Register_Login {
 		driver = new FirefoxDriver();
 
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
 
 	}
@@ -56,7 +56,9 @@ public class User_01_Register_Login {
 
 		driver.findElement(By.cssSelector("button#register-button")).click();
 
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Wrong email");
+		Assert.assertEquals(
+				driver.findElement(By.xpath("//div[@class='message-error validation-summary-errors']//li")).getText(),
+				"Wrong email");
 	}
 
 	@Test
@@ -71,7 +73,8 @@ public class User_01_Register_Login {
 
 		driver.findElement(By.cssSelector("button#register-button")).click();
 
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Wrong email");
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='result']")).getText(),
+				"Your registration completed");
 
 	}
 
@@ -87,7 +90,8 @@ public class User_01_Register_Login {
 
 		driver.findElement(By.cssSelector("button#register-button")).click();
 
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(),
+		Assert.assertEquals(
+				driver.findElement(By.xpath("//div[@class='message-error validation-summary-errors']//li")).getText(),
 				"The specified email already exists");
 
 	}
@@ -104,8 +108,8 @@ public class User_01_Register_Login {
 
 		driver.findElement(By.cssSelector("button#register-button")).click();
 
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(),
-				"Password must meet the following rules: must have at least 6 characters");
+		Assert.assertEquals(driver.findElement(By.xpath("//span[@id='Password-error']")).getText(),
+				"Password must meet the following rules:\nmust have at least 6 characters");
 
 	}
 
