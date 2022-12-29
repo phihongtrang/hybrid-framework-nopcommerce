@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 
-public class Level_02_Apply_BasePage_I {
+public class Level_02_Apply_BasePage_II {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String emailAddress;
@@ -28,7 +28,7 @@ public class Level_02_Apply_BasePage_I {
 		driver = new FirefoxDriver();
 
 		// Initial (Khởi tạo)
-		basePage = new BasePage();
+		basePage = BasePage.getBasePageObject();
 
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
