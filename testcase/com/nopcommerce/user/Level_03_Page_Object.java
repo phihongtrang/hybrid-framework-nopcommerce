@@ -15,18 +15,26 @@ import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 
 public class Level_03_Page_Object extends BasePage {
-	WebDriver driver;
-	String projectPath = System.getProperty("user.dir");
-	String emailAddress;
+	private HomePageObject homePage;
+	private RegisterPageObject registerPage;
+	private WebDriver driver;
+	private String projectPath = System.getProperty("user.dir");
+	private String firstName, lastName, password, emailAddress;
 
 	@BeforeClass
 	public void beforeClass() {
 		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 		driver = new FirefoxDriver();
-		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
 
+		firstName = "Automation";
+		lastName = "FC";
+		password = "123456";
+		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
+
+		homePage = new HomePageObject(driver);
+		registerPage = new RegisterPageObject(driver);
 	}
 
 	@Test
@@ -53,11 +61,11 @@ public class Level_03_Page_Object extends BasePage {
 		homePage.clickToRegisterLink();
 
 		System.out.println("Register Page - Step 02: Input to required fields");
-		registerPage.inputToFirstNameTextbox("Automation");
-		registerPage.inputToLastNameTextbox("FC");
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox("123@456");
-		registerPage.inputToPasswordTextbox("Automation");
-		registerPage.inputToConfirmPasswordTextbox("Automation");
+		registerPage.inputToPasswordTextbox(password);
+		registerPage.inputToConfirmPasswordTextbox(password);
 
 		System.out.println("Register Page - Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -73,11 +81,11 @@ public class Level_03_Page_Object extends BasePage {
 		homePage.clickToRegisterLink();
 
 		System.out.println("Register Page - Step 02: Input to required fields");
-		registerPage.inputToFirstNameTextbox("Automation");
-		registerPage.inputToLastNameTextbox("FC");
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(emailAddress);
-		registerPage.inputToPasswordTextbox("Automation");
-		registerPage.inputToConfirmPasswordTextbox("Automation");
+		registerPage.inputToPasswordTextbox(password);
+		registerPage.inputToConfirmPasswordTextbox(password);
 
 		System.out.println("Register Page - Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -95,11 +103,11 @@ public class Level_03_Page_Object extends BasePage {
 		homePage.clickToRegisterLink();
 
 		System.out.println("Register Page - Step 02: Input to required fields");
-		registerPage.inputToFirstNameTextbox("Automation");
-		registerPage.inputToLastNameTextbox("FC");
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(emailAddress);
-		registerPage.inputToPasswordTextbox("Automation");
-		registerPage.inputToConfirmPasswordTextbox("Automation");
+		registerPage.inputToPasswordTextbox(password);
+		registerPage.inputToConfirmPasswordTextbox(password);
 
 		System.out.println("Register Page - Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -115,8 +123,8 @@ public class Level_03_Page_Object extends BasePage {
 		homePage.clickToRegisterLink();
 
 		System.out.println("Register Page - Step 02: Input to required fields");
-		registerPage.inputToFirstNameTextbox("Automation");
-		registerPage.inputToLastNameTextbox("FC");
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(emailAddress);
 		registerPage.inputToPasswordTextbox("123");
 		registerPage.inputToConfirmPasswordTextbox("123");
@@ -136,10 +144,10 @@ public class Level_03_Page_Object extends BasePage {
 		homePage.clickToRegisterLink();
 
 		System.out.println("Register Page - Step 02: Input to required fields");
-		registerPage.inputToFirstNameTextbox("Automation");
-		registerPage.inputToLastNameTextbox("FC");
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(emailAddress);
-		registerPage.inputToPasswordTextbox("123456");
+		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox("654321");
 
 		System.out.println("Register Page - Step 03: Click to Register button");
@@ -161,8 +169,4 @@ public class Level_03_Page_Object extends BasePage {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
-
-	HomePageObject homePage;
-	RegisterPageObject registerPage;
-
 }
