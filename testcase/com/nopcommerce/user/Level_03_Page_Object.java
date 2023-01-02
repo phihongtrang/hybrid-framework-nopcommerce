@@ -71,7 +71,7 @@ public class Level_03_Page_Object extends BasePage {
 		registerPage.clickToRegisterButton();
 
 		System.out.println("Register Page - Step 04: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Wrong email");
+		Assert.assertEquals(registerPage.getErrorWrongMessage(), "Wrong email");
 
 	}
 
@@ -93,8 +93,6 @@ public class Level_03_Page_Object extends BasePage {
 		System.out.println("Register Page - Step 04: Verify success message displayed");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
-		System.out.println("Register Page - Step 04: Click to Logout link");
-		registerPage.clickToLogoutLink();
 	}
 
 	@Test
@@ -133,7 +131,7 @@ public class Level_03_Page_Object extends BasePage {
 		registerPage.clickToRegisterButton();
 
 		System.out.println("Register Page - Step 04: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(),
+		Assert.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(),
 				"Password must meet the following rules:\nmust have at least 6 characters");
 
 	}

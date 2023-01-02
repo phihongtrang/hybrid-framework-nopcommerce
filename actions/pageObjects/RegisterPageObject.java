@@ -8,6 +8,10 @@ import pageUIs.RegisterPageUI;
 public class RegisterPageObject extends BasePage {
 	private WebDriver driver;
 
+	public RegisterPageObject(WebDriver driver) {
+		this.driver = driver;
+	}
+
 	public void clickToRegisterButton() {
 		waitForElementInvisible(driver, RegisterPageUI.REGISTER_BUTTON);
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
@@ -16,6 +20,11 @@ public class RegisterPageObject extends BasePage {
 	public String getErrorMessageAtFirstnameTextbox() {
 		waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
 		return getElementText(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
+	}
+
+	public String getErrorWrongMessage() {
+		waitForElementVisible(driver, RegisterPageUI.WRONG_EMAIL_ERROR_MESSAGE);
+		return getElementText(driver, RegisterPageUI.WRONG_EMAIL_ERROR_MESSAGE);
 	}
 
 	public String getErrorMessageAtLasttnameTextbox() {
@@ -62,8 +71,8 @@ public class RegisterPageObject extends BasePage {
 	}
 
 	public void inputToConfirmPasswordTextbox(String confirmPassWord) {
-		waitForElementInvisible(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
-		sendkeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, confirmPassWord);
+		waitForElementInvisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
+		sendkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassWord);
 
 	}
 
