@@ -17,4 +17,9 @@ public class HomePageObject extends BasePage {
 
 	}
 
+	public void clickToLoginLink() {
+		clickToElement(driver, HomePageUI.REGISTER_LINK);
+
+	}
+
 }

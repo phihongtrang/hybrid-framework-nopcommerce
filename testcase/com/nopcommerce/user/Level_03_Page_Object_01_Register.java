@@ -14,7 +14,7 @@ import commons.BasePage;
 import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 
-public class Level_03_Page_Object extends BasePage {
+public class Level_03_Page_Object_01_Register extends BasePage {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private WebDriver driver;
@@ -34,7 +34,7 @@ public class Level_03_Page_Object extends BasePage {
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
 
 		homePage = new HomePageObject(driver);
-		registerPage = new RegisterPageObject(driver);
+
 	}
 
 	@Test
@@ -42,6 +42,9 @@ public class Level_03_Page_Object extends BasePage {
 
 		System.out.println("Register_01 - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
+
+		// Click Register link -> Nhảy qua trang Register
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_01 - Step 02: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -59,6 +62,9 @@ public class Level_03_Page_Object extends BasePage {
 	public void Register_02_Invalid_Email() {
 		System.out.println("Register_02 - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
+
+		// Click Register link -> Nhảy qua trang Register
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_02 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -80,6 +86,9 @@ public class Level_03_Page_Object extends BasePage {
 		System.out.println("Register_03 - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
 
+		// Click Register link -> Nhảy qua trang Register
+		registerPage = new RegisterPageObject(driver);
+
 		System.out.println("Register_03 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -99,6 +108,9 @@ public class Level_03_Page_Object extends BasePage {
 	public void Register_04_Exsiting_Email() {
 		System.out.println("Register_04 - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
+
+		// Click Register link -> Nhảy qua trang Register
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_04 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -120,6 +132,9 @@ public class Level_03_Page_Object extends BasePage {
 		System.out.println("Register_05 - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
 
+		// Click Register link -> Nhảy qua trang Register
+		registerPage = new RegisterPageObject(driver);
+
 		System.out.println("Register_05 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -140,6 +155,9 @@ public class Level_03_Page_Object extends BasePage {
 	public void Register_06_Invalid_Confirm_Password() {
 		System.out.println("Register_06 - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
+
+		// Click Register link -> Nhảy qua trang Register
+		registerPage = new RegisterPageObject(driver);
 
 		System.out.println("Register_06 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
