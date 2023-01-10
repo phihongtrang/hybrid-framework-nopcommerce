@@ -4,53 +4,37 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
+import commons.BaseTest;
 import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 
-public class Level_04_Multiple_Browser extends BasePage {
+public class Level_04_Multiple_Browser extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	private WebDriver driver;
-	private String projectPath = System.getProperty("user.dir");
+	private WebDriver driverTestClass;
+
 	private String firstName, lastName, password, emailAddress;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
-		// Gọi đến cái khởi tạo driver tương ứng với browser name
-		System.out.println("Run on" + browserName);
-		if (browserName.equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-			driver = new FirefoxDriver();
-		} else if (browserName.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
-			driver = new ChromeDriver();
-		} else if (browserName.equals("edge")) {
-			System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
-			driver = new EdgeDriver();
-		} else {
-			throw new RuntimeException("Browser name invalid.");
-		}
+		driverTestClass = getBrowserDriver(browserName);
 
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		driver.get("https://demo.nopcommerce.com/");
+		driverTestClass.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		driverTestClass.get("https://demo.nopcommerce.com/");
 
 		firstName = "Automation";
 		lastName = "FC";
 		password = "123456";
 		emailAddress = "afc" + generateFakeNumber() + "@mail.vn";
 
-		homePage = new HomePageObject(driver);
+		homePage = new HomePageObject(driverTestClass);
 
 	}
 
@@ -61,7 +45,7 @@ public class Level_04_Multiple_Browser extends BasePage {
 		homePage.clickToRegisterLink();
 
 		// Click Register link -> Nhảy qua trang Register
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driverTestClass);
 
 		System.out.println("Register_01 - Step 02: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -81,7 +65,7 @@ public class Level_04_Multiple_Browser extends BasePage {
 		homePage.clickToRegisterLink();
 
 		// Click Register link -> Nhảy qua trang Register
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driverTestClass);
 
 		System.out.println("Register_02 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -104,7 +88,7 @@ public class Level_04_Multiple_Browser extends BasePage {
 		homePage.clickToRegisterLink();
 
 		// Click Register link -> Nhảy qua trang Register
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driverTestClass);
 
 		System.out.println("Register_03 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -127,7 +111,7 @@ public class Level_04_Multiple_Browser extends BasePage {
 		homePage.clickToRegisterLink();
 
 		// Click Register link -> Nhảy qua trang Register
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driverTestClass);
 
 		System.out.println("Register_04 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -150,7 +134,7 @@ public class Level_04_Multiple_Browser extends BasePage {
 		homePage.clickToRegisterLink();
 
 		// Click Register link -> Nhảy qua trang Register
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driverTestClass);
 
 		System.out.println("Register_05 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -174,7 +158,7 @@ public class Level_04_Multiple_Browser extends BasePage {
 		homePage.clickToRegisterLink();
 
 		// Click Register link -> Nhảy qua trang Register
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driverTestClass);
 
 		System.out.println("Register_06 - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -194,7 +178,7 @@ public class Level_04_Multiple_Browser extends BasePage {
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		driverTestClass.quit();
 
 	}
 
