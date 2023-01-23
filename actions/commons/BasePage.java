@@ -235,7 +235,7 @@ public class BasePage {
 		}
 	}
 
-	public boolean isElementDisplay(WebDriver driver, String xpathLocator) {
+	public boolean isElementDisplayed(WebDriver driver, String xpathLocator) {
 		return getWebElement(driver, xpathLocator).isDisplayed();
 	}
 
