@@ -14,9 +14,10 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
+import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
 
-public class Level_06_Page_Generator_Manager_PI extends BaseTest {
+public class Level_06_Page_Generator_Manager_PIII extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
@@ -35,11 +36,10 @@ public class Level_06_Page_Generator_Manager_PI extends BaseTest {
 		existingEmail = "afc" + generateFakeNumber() + "@mail.vn";
 		notFoundEmail = "afc" + generateFakeNumber() + "@mail.com";
 
-		homePage = new HomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 
 		System.out.println("Pre-Condition - Step 01: Click to Register link");
-		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		registerPage = homePage.clickToRegisterLink();
 
 		System.out.println("Pre-Condition - Step 02: Input to required fields");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -60,9 +60,7 @@ public class Level_06_Page_Generator_Manager_PI extends BaseTest {
 
 	@Test
 	public void Login_01_Empty_Data() {
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 
 		loginPage.clickToLoginButton();
 
@@ -72,9 +70,7 @@ public class Level_06_Page_Generator_Manager_PI extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.clickToLoginButton();
 
@@ -84,9 +80,7 @@ public class Level_06_Page_Generator_Manager_PI extends BaseTest {
 
 	@Test
 	public void Login_03_Email_Not_Found() {
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(notFoundEmail);
 		loginPage.clickToLoginButton();
 
@@ -96,9 +90,7 @@ public class Level_06_Page_Generator_Manager_PI extends BaseTest {
 
 	@Test
 	public void Login_04_Existing_Email_Empty_Password() {
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("");
 		loginPage.clickToLoginButton();
@@ -109,9 +101,7 @@ public class Level_06_Page_Generator_Manager_PI extends BaseTest {
 
 	@Test
 	public void Login_05_Existing_Email_Incorrect_Password() {
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("654321");
 		loginPage.clickToLoginButton();
@@ -122,15 +112,11 @@ public class Level_06_Page_Generator_Manager_PI extends BaseTest {
 
 	@Test
 	public void Login_06_Valid_Email_Password() {
-		homePage.clickToLoginLink();
-
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(password);
-		loginPage.clickToLoginButton();
+		homePage = loginPage.clickToLoginButton();
 
-		// Login thành công -> Homepage
-		homePage = new HomePageObject(driver);
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}
 
