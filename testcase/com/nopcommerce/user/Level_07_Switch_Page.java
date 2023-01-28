@@ -10,11 +10,14 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import pageObjects.AddressPageObject;
+import pageObjects.CustomerInforPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
-import pageObjects.MyAccountPageObject;
+import pageObjects.MyProductReviewPageObject;
 import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
+import pageObjects.RewardPointPageObject;
 
 public class Level_07_Switch_Page extends BaseTest {
 
@@ -58,13 +61,25 @@ public class Level_07_Switch_Page extends BaseTest {
 	}
 
 	@Test
-	public void User_03_My_Account() {
-		myAccountPage = homePage.clickToMyAccountLink();
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+	public void User_03_Customer_Infor() {
+		customerInforPage = homePage.clickToMyAccountLink();
+		Assert.assertTrue(customerInforPage.isCustomerInforPageDisplayed());
 	}
 
 	@Test
 	public void User_04_Switch_Page() {
+		// Customer Infor -> Address
+		addressPage = customerInforPage.openAddressPage(driver);
+		// Address -> My Product Review
+		myProductReviewPage = addressPage.openMyProductReviewPage(driver);
+		// My Product Review -> Reward point
+		rewardPointPage = myProductReviewPage.openRewardPointPage(driver);
+		// Reward point -> Address
+		addressPage = rewardPointPage.openAddressPage(driver);
+		// Address -> Reward point
+		rewardPointPage = addressPage.openRewardPointPage(driver);
+		// Reward point -> My Product Review
+		myProductReviewPage = rewardPointPage.openMyProductReviewPage(driver);
 
 	}
 
@@ -77,7 +92,10 @@ public class Level_07_Switch_Page extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
-	private MyAccountPageObject myAccountPage;
+	private CustomerInforPageObject customerInforPage;
+	private AddressPageObject addressPage;
+	private MyProductReviewPageObject myProductReviewPage;
+	private RewardPointPageObject rewardPointPage;
 	private WebDriver driver;
 	private String firstName, lastName, password, email;
 
