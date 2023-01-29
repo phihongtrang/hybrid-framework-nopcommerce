@@ -15,11 +15,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pageObjects.AddressPageObject;
-import pageObjects.MyProductReviewPageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RewardPointPageObject;
-import pageUIs.BasePageUI;
+import pageObjects.nopCommerce.user.UserAddressPageObject;
+import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
+import pageObjects.nopCommerce.user.UserRewardPointPageObject;
+import pageUIs.nopCommerce.user.UserBasePageUI;
 
 public class BasePage {
 
@@ -367,22 +366,22 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
 	}
 
-	public AddressPageObject openAddressPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.ADDRESS_LINK);
-		clickToElement(driver, BasePageUI.ADDRESS_LINK);
-		return PageGeneratorManager.getAddressPageObject(driver);
+	public UserAddressPageObject openAddressPage(WebDriver driver) {
+		waitForElementVisible(driver, UserBasePageUI.ADDRESS_LINK);
+		clickToElement(driver, UserBasePageUI.ADDRESS_LINK);
+		return PageGeneratorManager.getUserAddressPageObject(driver);
 	}
 
-	public MyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_LINK);
-		return PageGeneratorManager.getMyProductReviewPageObject(driver);
+	public UserMyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
+		waitForElementVisible(driver, UserBasePageUI.MY_PRODUCT_REVIEW_LINK);
+		clickToElement(driver, UserBasePageUI.MY_PRODUCT_REVIEW_LINK);
+		return PageGeneratorManager.getUserMyProductReviewPageObject(driver);
 	}
 
-	public RewardPointPageObject openRewardPointPage(WebDriver driver) {
-		waitForElementVisible(driver, BasePageUI.REWARD_POINT_LINK);
-		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
-		return PageGeneratorManager.getRewardPointPageObject(driver);
+	public UserRewardPointPageObject openRewardPointPage(WebDriver driver) {
+		waitForElementVisible(driver, UserBasePageUI.REWARD_POINT_LINK);
+		clickToElement(driver, UserBasePageUI.REWARD_POINT_LINK);
+		return PageGeneratorManager.getUserRewardPointPageObject(driver);
 	}
 
 	private long longTimeout = 30;

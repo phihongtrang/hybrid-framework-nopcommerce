@@ -12,15 +12,15 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Level_06_Page_Generator_Manager_PIII extends BaseTest {
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
 	private WebDriver driver;
 	private String firstName, lastName, password, existingEmail, invalidEmail, notFoundEmail;
 
@@ -36,7 +36,7 @@ public class Level_06_Page_Generator_Manager_PIII extends BaseTest {
 		existingEmail = "afc" + generateFakeNumber() + "@mail.vn";
 		notFoundEmail = "afc" + generateFakeNumber() + "@mail.com";
 
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUerHomePage(driver);
 
 		System.out.println("Pre-Condition - Step 01: Click to Register link");
 		registerPage = homePage.clickToRegisterLink();
