@@ -13,10 +13,12 @@ public class Topic_14_StringFormat {
 	public static String DYNAMIC_LINK_BY_PAGE_NAME = "//div[contains(@class,'%s')]//a[text()='%s']";
 
 	public static void main(String[] args) {
+		// ko phai cai nay
 		// clickToLink(CUSTOMER_INFO_LINK);
 		// clickToLink(ADDRESS_LINK);
 		// clickToLink(MY_PRODUCT_REVIEW_LINK);
 		// clickToLink(REWARD_POINT_LINK);
+		System.out.print("okkk");
 
 		clickToLink(DYNAMIC_SIDEBAR_LINK_BY_PAGE_NAME, "Customer info");
 		clickToLink(DYNAMIC_SIDEBAR_LINK_BY_PAGE_NAME, "Addresses");
