@@ -19,6 +19,7 @@ public class Topic_14_StringFormat {
 		// clickToLink(MY_PRODUCT_REVIEW_LINK);
 		// clickToLink(REWARD_POINT_LINK);
 		System.out.print("okkk");
+		System.out.print("vidu day la code test tinh nang login da xong ");
 
 		clickToLink(DYNAMIC_SIDEBAR_LINK_BY_PAGE_NAME, "Customer info");
 		clickToLink(DYNAMIC_SIDEBAR_LINK_BY_PAGE_NAME, "Addresses");
