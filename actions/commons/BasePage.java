@@ -489,6 +489,12 @@ public class BasePage {
 			throw new RuntimeException("Invalid page name at My Account Area.");
 		}
 	}
+	
+	public void  openPagesAtMyAccountByPageName(WebDriver driver, String pageName) {
+		waitForElementClickable(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		clickToElement(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		
+	}
 
 	// Switch Role
 	public UserHomePageObject clickToLogoutLinkAtUserPage(WebDriver driver) {
