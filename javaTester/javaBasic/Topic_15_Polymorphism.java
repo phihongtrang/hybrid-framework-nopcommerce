@@ -20,4 +20,8 @@ public class Topic_15_Polymorphism {
 	public void setFullName(String fullName, int phone) {
 
 	}
+	
+	public void setName(String fullName, int phone) {
+		
+	}
 }
